@@ -10,7 +10,7 @@ window.onload = function(){
    gestionarXml(this);
   }
  };
- xhttp.open("GET", "preguntas.xml", true);
+ xhttp.open("GET", "questions.xml", true);
  xhttp.send();
  
  //Para corregir gestionamos el contenido introducido en el formulario
