@@ -10,5 +10,5 @@ xhttp.send();
 function myFunction(xml) {
     var xmlDoc = xml.responseXML;
     document.getElementById("title").innerHTML =
-    xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+    xmlDoc.getElementsByTagName("title")[0].childNodes[1].nodeValue;
 }
