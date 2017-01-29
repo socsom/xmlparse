@@ -27,7 +27,7 @@ function myFunction(xml) {
     document.getElementById("title3").innerHTML =
     xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue;
     document.getElementById("r31").innerHTML =
-    xmlDoc.getElementsByTagName("option")[4].childNodes[0].nodeValue;
+    xmlDoc.getElementsByTagName("title")[2].childNodes[1].nodeValue;
     document.getElementById("r32").innerHTML =
     xmlDoc.getElementsByTagName("option")[5].childNodes[0].nodeValue;
     document.getElementById("r33").innerHTML =
