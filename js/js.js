@@ -15,9 +15,9 @@ function myFunction(xml) {
     document.getElementById("r11").innerHTML =
     xmlDoc.getElementsByTagName("option")[0].childNodes[0].nodeValue;
     document.getElementById("r12").innerHTML =
-    xmlDoc.getElementsByTagName("option")[1].childNodes[0].nodeValue;
+    xmlDoc.getElementsByTagName("option")[0].childNodes[1].nodeValue;
     document.getElementById("r13").innerHTML =
-    xmlDoc.getElementsByTagName("option")[2].childNodes[0].nodeValue;
+    xmlDoc.getElementsByTagName("option")[0].childNodes[2].nodeValue;
     
     
     document.getElementById("title2").innerHTML =
