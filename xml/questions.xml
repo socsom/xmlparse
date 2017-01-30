@@ -14,7 +14,7 @@
 	
 	<question id="pregunta_002">
 		<type>text</type>
-			<title>2.- JavaScript puede cambiar atributos HTML</title>
+			<title>2.- ¿JavaScript puede cambiar atributos HTML?</title>
 			<answer>si</answer>
 	</question>
 	
