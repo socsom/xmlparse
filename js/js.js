@@ -36,6 +36,14 @@ function myFunction(xml) {
     
     document.getElementById("title4").innerHTML =
     xmlDoc.getElementsByTagName("title")[3].childNodes[0].nodeValue;
+    document.getElementById("r41").innerHTML =
+    xmlDoc.getElementsByTagName("option")[7].childNodes[0].nodeValue;
+    document.getElementById("r42").innerHTML =
+    xmlDoc.getElementsByTagName("option")[8].childNodes[0].nodeValue;
+    document.getElementById("r43").innerHTML =
+    xmlDoc.getElementsByTagName("option")[9].childNodes[0].nodeValue;
+    
+    
     document.getElementById("title5").innerHTML =
     xmlDoc.getElementsByTagName("title")[4].childNodes[0].nodeValue;
     document.getElementById("title6").innerHTML =
