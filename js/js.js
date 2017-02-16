@@ -4,7 +4,7 @@ xhttp.onreadystatechange = function() {
         myFunction(this);
     }
 };
-xhttp.open("GET", "questions.xml", true);
+xhttp.open("GET", "xml/questions.xml", true);
 xhttp.send();
 //****************************************************************************************************
 // Recuperamos los datos del fichero XML xml/questions.xml
