@@ -391,15 +391,15 @@ function corregirCheckbox2(){
   for (i = 0; i < f.color2.length; i++) {  //"color" es el nombre asignado a todos los checkbox
    if (f.color2[i].checked) {
     escorrecta[i]=false;     
-    for (j = 0; j < respuestasCheckbox.length; j++) {
-     if (i==respuestasCheckbox[j]) escorrecta[i]=true;
+    for (j = 0; j < respuestasCheckbox2.length; j++) {
+     if (i==respuestasCheckbox2[j]) escorrecta[i]=true;
     }
 
     if (escorrecta[i]) {
-     nota +=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
+     nota +=1.0/respuestasCheckbox2.length;  //dividido por el número de respuestas correctas   
      darRespuestaHtml("P3: "+i+" correcta");    
     } else {
-     nota -=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
+     nota -=1.0/respuestasCheckbox2.length;  //dividido por el número de respuestas correctas   
      darRespuestaHtml("P3: "+i+" incorrecta");
     }   
    }
