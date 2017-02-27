@@ -26,6 +26,7 @@ window.onload = function(){
   presentarNota();  
   reintentar();
   document.getElementById("resultadosDiv").style.display="block";
+  document.getElementById('resultadosDiv').scrollIntoView();
    return false;
  }
 
