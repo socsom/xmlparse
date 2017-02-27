@@ -351,7 +351,7 @@ function corregirSelect(){
   //Compara el índice seleccionado con el valor del íncide que hay en el xml (<answer>2</answer>)
   //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
   //luego comparar ese value con el value guardado en answer
-  var sel = formElement.elements[3];  
+  var sel = formElement.elements[9];  
   if (sel.selectedIndex==respuestaSelect) {
    darRespuestaHtml("P4: Correcto");
    nota +=1;
@@ -362,7 +362,7 @@ function corregirSelect(){
 function corregirTexto2(){
   //Vosotros debéis comparar el texto escrito con el texto que hay en el xml
   //en este ejemplo hace una comparación de números enteros
-  var s2=formElement.elements[6].value;   
+  var s2=formElement.elements[21].value;   
   if (s2==textoSecreto2) {
    darRespuestaHtml("P7: Correcto");
    nota +=1;
@@ -375,7 +375,7 @@ function corregirSelect2(){
   //Compara el índice seleccionado con el valor del íncide que hay en el xml (<answer>2</answer>)
   //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
   //luego comparar ese value con el value guardado en answer
-  var sel = formElement.elements[8];  
+  var sel = formElement.elements[26];  
   if (sel.selectedIndex==respuestaSelect2) {
    darRespuestaHtml("P9: Correcto");
    nota +=1;
@@ -397,10 +397,10 @@ function corregirCheckbox2(){
 
     if (escorrecta[i]) {
      nota +=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
-     darRespuestaHtml("P5: "+i+" correcta");    
+     darRespuestaHtml("P3: "+i+" correcta");    
     } else {
      nota -=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
-     darRespuestaHtml("P5: "+i+" incorrecta");
+     darRespuestaHtml("P3: "+i+" incorrecta");
     }   
    }
   }
@@ -423,10 +423,10 @@ function corregirCheckbox(){
 
     if (escorrecta[i]) {
      nota +=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
-     darRespuestaHtml("P6: "+i+" correcta");    
+     darRespuestaHtml("P8: "+i+" correcta");    
     } else {
      nota -=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
-     darRespuestaHtml("P6: "+i+" incorrecta");
+     darRespuestaHtml("P8: "+i+" incorrecta");
     }   
    }
   }
