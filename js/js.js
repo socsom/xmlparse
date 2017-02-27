@@ -460,3 +460,4 @@ function reintentar() {
 	window.location.reload(true);
 	}
 }
+}
