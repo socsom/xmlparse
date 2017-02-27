@@ -1,3 +1,38 @@
+var formElement=null;
+var textoSecreto=null;
+var textoSecreto2=null;
+var respuestaSelect=null;
+var respuestaSelect2=null;
+var respuestasCheckbox2 = [];
+var respuestasCheckbox = [];
+
+var nota = 0;  //nota de la prueba sobre 3 puntos (hay 3 preguntas)
+
+//**************************************************************************************************** 
+//Después de cargar la página (onload) se definen los eventos sobre los elementos entre otras acciones.
+window.onload = function(){ 
+
+ //CORREGIR al apretar el botón
+ formElement=document.getElementById('myform');
+ formElement.onsubmit=function(){
+   inicializar();
+   corregirTexto();
+   corregirSelect();  
+   corregirTexto2();
+   corregirSelect2();
+   corregirCheckbox2();
+   corregirCheckbox();
+ 
+  presentarNota();  
+  reintentar();
+  document.getElementById("resultadosDiv").style.display="block";
+   return false;
+ }
+
+
+
+
+
 //LEER XML de xml/questions.xml
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
@@ -19,6 +54,7 @@ function gestionarXml(dadesXml) {
  var title2=xmlDoc.getElementsByTagName("title")[1].childNodes[0].nodeValue;
  ponerDatosInputHtml(title2);
 // RESPUESTA FALTA!!numeroSecreto=parseInt(xmlDoc.getElementsByTagName("answer")[0].childNodes[0].nodeValue);
+    textoSecreto=xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue;
     function ponerDatosInputHtml(t){
  document.getElementById("title2").innerHTML = t;
 }
@@ -28,6 +64,7 @@ function gestionarXml(dadesXml) {
  var title7=xmlDoc.getElementsByTagName("title")[6].childNodes[0].nodeValue;
  ponerDatosInputHtml2(title7);
 // RESPUESTA FALTA!!numeroSecreto=parseInt(xmlDoc.getElementsByTagName("answer")[0].childNodes[0].nodeValue);
+    textoSecreto2=xmlDoc.getElementsByTagName("answer")[8].childNodes[0].nodeValue;
     function ponerDatosInputHtml2(t){
  document.getElementById("title7").innerHTML = t;
 }
@@ -44,6 +81,7 @@ function gestionarXml(dadesXml) {
  }
  ponerDatosSelectHtml(title4,opcionesSelect);
 //RESPUESTA FALTA respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
+    respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[4].innerHTML);
     
   function ponerDatosSelectHtml(t,opt){
   document.getElementById("title4").innerHTML=t;
@@ -70,6 +108,7 @@ function gestionarXml(dadesXml) {
  }
  ponerDatosSelect2Html(title9,opcionesSelect2);
 //FALTA respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
+    respuestaSelect2=parseInt(xmlDoc.getElementsByTagName("answer")[11].innerHTML);
     
   function ponerDatosSelect2Html(t,opt){
   document.getElementById("title9").innerHTML=t;
@@ -149,7 +188,12 @@ function gestionarXml(dadesXml) {
     opcionesCheckbox[i]=xmlDoc.getElementById("pregunta_003").getElementsByTagName('option')[i].childNodes[0].nodeValue;
  }  
  ponerDatosCheckboxHtml(title3,opcionesCheckbox);
- /* RESPUESTAS
+ var nres = xmlDoc.getElementById("pregunta_003").getElementsByTagName('answer').length;
+ for (i = 0; i < nres; i++) { 
+  respuestasCheckbox[i]=xmlDoc.getElementById("pregunta_003").getElementsByTagName("answer")[i].innerHTML;
+ }
+    
+    /* RESPUESTAS
  var nres = xmlDoc.getElementById("preguntas_003").getElementsByTagName('answer').length;
  for (i = 0; i < nres; i++) { 
   respuestasCheckbox[i]=xmlDoc.getElementById("preguntas_003").getElementsByTagName("answer")[i].childNodes[0].nodeValue;
@@ -184,7 +228,12 @@ function ponerDatosCheckboxHtml(t,opt){
     opcionesCheckbox2[i]=xmlDoc.getElementById("pregunta_008").getElementsByTagName('option')[i].childNodes[0].nodeValue;
  }  
  ponerDatosCheckbox2Html(title8,opcionesCheckbox2);
- /* RESPUESTAS
+ var nres2 = xmlDoc.getElementById("pregunta_008").getElementsByTagName('answer').length;
+ for (i = 0; i < nres2; i++) { 
+  respuestasCheckbox2[i]=xmlDoc.getElementById("pregunta_008").getElementsByTagName("answer")[i].innerHTML;
+ }
+    
+    /* RESPUESTAS
  var nres = xmlDoc.getElementById("preguntas_003").getElementsByTagName('answer').length;
  for (i = 0; i < nres; i++) { 
   respuestasCheckbox[i]=xmlDoc.getElementById("preguntas_003").getElementsByTagName("answer")[i].childNodes[0].nodeValue;
@@ -201,10 +250,10 @@ function ponerDatosCheckbox2Html(t,opt){
     var input = document.createElement("input");
     var label = document.createElement("label");
     label.innerHTML=opt[i];
-    label.setAttribute("for", "color_"+i);
+    label.setAttribute("for", "color2_"+i);
     input.type="checkbox";
-    input.name="color";
-    input.id="color_"+i;;    
+    input.name="color2";
+    input.id="color2_"+i;;    
     checkboxContainer.appendChild(input);
     checkboxContainer.appendChild(label);
  }  
@@ -280,4 +329,134 @@ function ponerDatosRadio2Html(t,opt){
 }    
     
     
+}
+    
+*******************************************************************************************************************************
+//implementación de la corrección
+
+function corregirTexto(){
+  //Vosotros debéis comparar el texto escrito con el texto que hay en el xml
+  //en este ejemplo hace una comparación de números enteros
+  var s=formElement.elements[1].value;    
+  if (s==textoSecreto) {
+   darRespuestaHtml("P2: Correcto");
+   nota +=1;
+  }
+  else darRespuestaHtml("P2: Incorrecto");
+ 
+}
+
+function corregirSelect(){
+  //Compara el índice seleccionado con el valor del íncide que hay en el xml (<answer>2</answer>)
+  //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
+  //luego comparar ese value con el value guardado en answer
+  var sel = formElement.elements[3];  
+  if (sel.selectedIndex==respuestaSelect) {
+   darRespuestaHtml("P4: Correcto");
+   nota +=1;
+  }
+  else darRespuestaHtml("P4: Incorrecto");
+}
+
+function corregirTexto2(){
+  //Vosotros debéis comparar el texto escrito con el texto que hay en el xml
+  //en este ejemplo hace una comparación de números enteros
+  var s2=formElement.elements[6].value;   
+  if (s2==textoSecreto2) {
+   darRespuestaHtml("P7: Correcto");
+   nota +=1;
+  }
+  else darRespuestaHtml("P7: Incorrecto");
+ 
+}
+
+function corregirSelect2(){
+  //Compara el índice seleccionado con el valor del íncide que hay en el xml (<answer>2</answer>)
+  //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
+  //luego comparar ese value con el value guardado en answer
+  var sel = formElement.elements[8];  
+  if (sel.selectedIndex==respuestaSelect2) {
+   darRespuestaHtml("P9: Correcto");
+   nota +=1;
+  }
+  else darRespuestaHtml("P9: Incorrecto");
+}
+
+//Si necesitáis ayuda para hacer un corregirRadio() decirlo, lo ideal es que a podáis construirla modificando corregirCheckbox
+function corregirCheckbox2(){
+  //Para cada opción mira si está checkeada, si está checkeada mira si es correcta y lo guarda en un array escorrecta[]
+  var f=formElement;
+  var escorrecta = [];
+  for (i = 0; i < f.color2.length; i++) {  //"color" es el nombre asignado a todos los checkbox
+   if (f.color2[i].checked) {
+    escorrecta[i]=false;     
+    for (j = 0; j < respuestasCheckbox.length; j++) {
+     if (i==respuestasCheckbox[j]) escorrecta[i]=true;
+    }
+
+    if (escorrecta[i]) {
+     nota +=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
+     darRespuestaHtml("P5: "+i+" correcta");    
+    } else {
+     nota -=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
+     darRespuestaHtml("P5: "+i+" incorrecta");
+    }   
+   }
+  }
+}
+
+
+
+
+//Si necesitáis ayuda para hacer un corregirRadio() decirlo, lo ideal es que a podáis construirla modificando corregirCheckbox
+function corregirCheckbox(){
+  //Para cada opción mira si está checkeada, si está checkeada mira si es correcta y lo guarda en un array escorrecta[]
+  var f=formElement;
+  var escorrecta = [];
+  for (i = 0; i < f.color.length; i++) {  //"color" es el nombre asignado a todos los checkbox
+   if (f.color[i].checked) {
+    escorrecta[i]=false;     
+    for (j = 0; j < respuestasCheckbox.length; j++) {
+     if (i==respuestasCheckbox[j]) escorrecta[i]=true;
+    }
+
+    if (escorrecta[i]) {
+     nota +=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
+     darRespuestaHtml("P6: "+i+" correcta");    
+    } else {
+     nota -=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
+     darRespuestaHtml("P6: "+i+" incorrecta");
+    }   
+   }
+  }
+}
+
+    
+ ****************************************************************************************************************************   
+//Gestionar la presentación de las respuestas
+function darRespuestaHtml(r){
+ var p = document.createElement("p");
+ var node = document.createTextNode(r);
+ p.appendChild(node);
+ document.getElementById('resultadosDiv').appendChild(p);
+}
+
+function presentarNota(){
+   darRespuestaHtml("Nota: "+nota+" puntos sobre 10");
+	
+}
+
+function inicializar(){
+   document.getElementById('resultadosDiv').innerHTML = "";
+   nota=0.0;
+}
+//****************************************************************************************************************
+function reintentar() {
+	var btn = document.createElement("BUTTON");
+	var t = document.createTextNode("Reintentar");
+	btn.appendChild(t);
+	document.getElementById('resultadosDiv').appendChild(btn); 
+	btn.onclick =function(){
+	window.location.reload(true);
+	}
 }
