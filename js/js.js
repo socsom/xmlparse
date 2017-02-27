@@ -338,7 +338,7 @@ function ponerDatosRadio2Html(t,opt){
 function corregirTexto(){
   //Vosotros debéis comparar el texto escrito con el texto que hay en el xml
   //en este ejemplo hace una comparación de números enteros
-  var s=formElement.elements[1].value;    
+  var s=formElement.elements[0].value;    
   if (s==textoSecreto) {
    darRespuestaHtml("P2: Correcto");
    nota +=1;
