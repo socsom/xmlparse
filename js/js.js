@@ -17,11 +17,13 @@ window.onload = function(){
  formElement.onsubmit=function(){
    inicializar();
    corregirTexto();
+   corregirCheckbox();	
    corregirSelect();  
    corregirTexto2();
-   corregirSelect2();
    corregirCheckbox2();
-   corregirCheckbox();
+   corregirSelect2();
+   
+   
  
   presentarNota();  
   reintentar();
@@ -362,7 +364,7 @@ function corregirSelect(){
 function corregirTexto2(){
   //Vosotros debéis comparar el texto escrito con el texto que hay en el xml
   //en este ejemplo hace una comparación de números enteros
-  var s2=formElement.elements[5].value;   
+  var s2=formElement.elements[22].value;   
   if (s2==textoSecreto2) {
    darRespuestaHtml("P7: Correcto");
    nota +=1;
@@ -397,10 +399,10 @@ function corregirCheckbox2(){
 
     if (escorrecta[i]) {
      nota +=1.0/respuestasCheckbox2.length;  //dividido por el número de respuestas correctas   
-     darRespuestaHtml("P3: "+i+" correcta");    
+     darRespuestaHtml("P8: "+i+" correcta");    
     } else {
      nota -=1.0/respuestasCheckbox2.length;  //dividido por el número de respuestas correctas   
-     darRespuestaHtml("P3: "+i+" incorrecta");
+     darRespuestaHtml("P8: "+i+" incorrecta");
     }   
    }
   }
@@ -423,10 +425,10 @@ function corregirCheckbox(){
 
     if (escorrecta[i]) {
      nota +=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
-     darRespuestaHtml("P8: "+i+" correcta");    
+     darRespuestaHtml("P3: "+i+" correcta");    
     } else {
      nota -=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
-     darRespuestaHtml("P8: "+i+" incorrecta");
+     darRespuestaHtml("P3: "+i+" incorrecta");
     }   
    }
   }
