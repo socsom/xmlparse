@@ -5,7 +5,7 @@ var respuestaSelect=null;
 var respuestaSelect2=null;
 var respuestasCheckbox2 = [];
 var respuestasCheckbox = [];
-var respuestasMselect=[];
+
 
 
 var nota = 0;  //nota de la prueba sobre 3 puntos (hay 3 preguntas)
@@ -143,10 +143,7 @@ function gestionarXml(dadesXml) {
  }
  ponerDatosMSelectHtml(title5,opcionesMSelect);
 //RESPUESTA FALTA respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
-   var nresM = xmlDoc.getElementById("pregunta_005").getElementsByTagName('answer').length;
- for (i = 0; i < nresM; i++) { 
-  respuestasMselect[i]=xmlDoc.getElementById("pregunta_005").getElementsByTagName("answer")[i].innerHTML;
- }
+   
   function ponerDatosMSelectHtml(t,opt){
   document.getElementById("title5").innerHTML=t;
      //RECUERDA document se refiere al documento HTML, xmlDOC es el documento leido XML.   
@@ -354,26 +351,8 @@ function corregirRadio2(){
 }
 
 function corregirMselect(){
-	//darRespuestaHtml("P5 : PENDIENTE");
-	 var f=formElement.elements[10];
+	darRespuestaHtml("P5 : PENDIENTE");
 	
-  var escorrecta = [];
-  for (i = 0; i < f.mSel.length; i++) {  //"color" es el nombre asignado a todos los checkbox
-   if (f.mSel[i].selected) {
-    escorrecta[i]=false;     
-    for (j = 0; j < respuestasMselect.length; j++) {
-     if (i==respuestasMselect[j]) escorrecta[i]=true;
-    }
-
-    if (escorrecta[i]) {
-     nota +=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
-     darRespuestaHtml("P5: "+i+" correcta");    
-    } else {
-     nota -=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
-     darRespuestaHtml("P5: "+i+" incorrecta");
-    }   
-   }
-  }
 }
 
 function corregirMselect2(){
