@@ -450,7 +450,7 @@ function corregirRadio2(){
    darRespuestaHtml("P1: Correcto");
    nota +=1;
   }
-  else darRespuestaHtml("P1: Incorrecto");
+  else darRespuestaHtml(rad.value);
 }
 
 
