@@ -447,12 +447,16 @@ function corregirRadio2(){
   //Compara el índice seleccionado con el valor del íncide que hay en el xml (<answer>2</answer>)
   //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
   //luego comparar ese value con el value guardado en answer
-  var rad = formElement.elements[0].value;  
-  if (rad==respuestaRadio2) {
+ 	
+var rad = formElement.elements[0];  
+for (var i=0, length = rad.length; i <length; i++{  
+if (rad[i].checked{
+     if (rad[i].value ==respuestaRadio2) {
    darRespuestaHtml("P1: Correcto");
    nota +=1;
   }
-  else darRespuestaHtml(rad);
+  else darRespuestaHtml(rad[i].value);
+}
 }
 
 
