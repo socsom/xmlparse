@@ -345,15 +345,15 @@ function ponerDatosRadio2Html(t,opt){
 //*******************************************************************************************************************************
 //implementación de la corrección
 
-function corregirRadio2{
+function corregirRadio2(){
 	darRespuestaHtml("P6 : PENDIENTE");
 }
 
-function corregirMselect{
+function corregirMselect(){
 	darRespuestaHtml("P5 : PENDIENTE");
 }
 
-function corregirMselect2{
+function corregirMselect2(){
 	darRespuestaHtml("P10 : PENDIENTE");
 }
 function corregirRadio(){
