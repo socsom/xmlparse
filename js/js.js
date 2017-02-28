@@ -450,7 +450,7 @@ function corregirRadio2(){
  	
 var rad = formElement.elements[0];  
 for (var i=0, length = rad.length; i <length; i++){  
-if (rad[i].checked{
+if (rad[i].checked){
      if (rad[i].value ==respuestaRadio2) {
    darRespuestaHtml("P1: Correcto");
    nota +=1;
