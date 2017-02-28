@@ -325,16 +325,7 @@ function ponerDatosRadio2Html(t,opt){
  var h3 = document.createElement("h3");
  h3.innerHTML = t;
  radioContainer.appendChild(h3); 
-	//Bucle para rellenar todas las opciones de select
-  for (i = 0; i < opt.length; i++) { 
-    var option = document.createElement("option");
-    option.text = opt[i];
-    option.value=i+1;
-    select.options.add(option);
- }  
-}
-	
- /*for (i = 0; i < opt.length; i++) { 
+ for (i = 0; i < opt.length; i++) { 
     var input = document.createElement("input");
     var label = document.createElement("label");
     label.innerHTML=opt[i];
@@ -347,7 +338,7 @@ function ponerDatosRadio2Html(t,opt){
     radioContainer.appendChild(label);
  }  
 }    
- */   
+ 
     
 }
     
@@ -456,12 +447,12 @@ function corregirRadio2(){
   //Compara el índice seleccionado con el valor del íncide que hay en el xml (<answer>2</answer>)
   //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
   //luego comparar ese value con el value guardado en answer
-  var rad = formElement.elements[0];  
-  if (rad.value-1==respuestaRadio2) {
+  var rad = formElement.elements[0].value;  
+  if (rad==respuestaRadio2) {
    darRespuestaHtml("P1: Correcto");
    nota +=1;
   }
-  else darRespuestaHtml(rad.value);
+  else darRespuestaHtml(rad);
 }
 
 
