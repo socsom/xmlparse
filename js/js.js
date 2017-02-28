@@ -5,7 +5,7 @@ var respuestaSelect=null;
 var respuestaSelect2=null;
 var respuestasCheckbox2 = [];
 var respuestasCheckbox = [];
-var respuestaRadio2=null;
+
 
 var nota = 0;  //nota de la prueba sobre 3 puntos (hay 3 preguntas)
 
@@ -17,16 +17,17 @@ window.onload = function(){
  formElement=document.getElementById('myform');
  formElement.onsubmit=function(){
    inicializar();
+   corregirRadio()
    corregirTexto();
    corregirCheckbox();	
    corregirSelect();  
+   corregirMselect();
+   corregirRadio2();
    corregirTexto2();
    corregirCheckbox2();
    corregirSelect2();
-   corregirRadio2();
-   
-   
- 
+   corregirMselect2();
+
   presentarNota();  
   reintentar();
   document.getElementById("resultadosDiv").style.display="block";
@@ -333,8 +334,7 @@ function ponerDatosRadio2Html(t,opt){
     input.type="radio";
     input.name="colorR2";
     input.id="colorR2_"+i;
-    input.value= i+1;//se lo añado para compararlo después con la respuesta  
-    radioContainer.appendChild(input);
+   radioContainer.appendChild(input);
     radioContainer.appendChild(label);
  }  
 }    
@@ -345,6 +345,22 @@ function ponerDatosRadio2Html(t,opt){
 //*******************************************************************************************************************************
 //implementación de la corrección
 
+function corregirRadio2{
+	darRespuestaHtml("P6 : PENDIENTE");
+}
+
+function corregirMselect{
+	darRespuestaHtml("P5 : PENDIENTE");
+}
+
+function corregirMselect2{
+	darRespuestaHtml("P10 : PENDIENTE");
+}
+function corregirRadio(){
+	darRespuestaHtml("P1 : PENDIENTE");
+}
+
+	
 function corregirTexto(){
   //Vosotros debéis comparar el texto escrito con el texto que hay en el xml
   //en este ejemplo hace una comparación de números enteros
@@ -443,22 +459,6 @@ function corregirCheckbox2(){
   }
 }
 
-function corregirRadio2(){
-  //Compara el índice seleccionado con el valor del íncide que hay en el xml (<answer>2</answer>)
-  //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
-  //luego comparar ese value con el value guardado en answer
- 	
-var rad = formElement.elements[0].value;  
-for (var i=0, length = rad.length; i <length; i++){  
-if (rad[i].checked){
-     if (rad[i].value ==respuestaRadio2) {
-   darRespuestaHtml("P1: Correcto");
-   nota +=1;
-  }
-  else darRespuestaHtml(rad.checked.value);
-}
-}
-}
 
 
     
