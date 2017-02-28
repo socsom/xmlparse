@@ -385,6 +385,33 @@ function corregirSelect2(){
   else darRespuestaHtml("P9: Incorrecto");
 }
 
+
+
+//Si necesitáis ayuda para hacer un corregirRadio() decirlo, lo ideal es que a podáis construirla modificando corregirCheckbox
+function corregirCheckbox(){
+  //Para cada opción mira si está checkeada, si está checkeada mira si es correcta y lo guarda en un array escorrecta[]
+  var f=formElement;
+  var escorrecta = [];
+  for (i = 0; i < f.color.length; i++) {  //"color" es el nombre asignado a todos los checkbox
+   if (f.color[i].checked) {
+    escorrecta[i]=false;     
+    for (j = 0; j < respuestasCheckbox.length; j++) {
+     if (i==respuestasCheckbox[j]) escorrecta[i]=true;
+    }
+
+    if (escorrecta[i]) {
+     nota +=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
+     darRespuestaHtml("P3: "+i+" correcta");    
+    } else {
+     nota -=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
+     darRespuestaHtml("P3: "+i+" incorrecta");
+    }   
+   }
+  }
+}	
+	
+	
+	
 //Si necesitáis ayuda para hacer un corregirRadio() decirlo, lo ideal es que a podáis construirla modificando corregirCheckbox
 function corregirCheckbox2(){
   //Para cada opción mira si está checkeada, si está checkeada mira si es correcta y lo guarda en un array escorrecta[]
@@ -410,29 +437,6 @@ function corregirCheckbox2(){
 
 
 
-
-//Si necesitáis ayuda para hacer un corregirRadio() decirlo, lo ideal es que a podáis construirla modificando corregirCheckbox
-function corregirCheckbox(){
-  //Para cada opción mira si está checkeada, si está checkeada mira si es correcta y lo guarda en un array escorrecta[]
-  var f=formElement;
-  var escorrecta = [];
-  for (i = 0; i < f.color.length; i++) {  //"color" es el nombre asignado a todos los checkbox
-   if (f.color[i].checked) {
-    escorrecta[i]=false;     
-    for (j = 0; j < respuestasCheckbox.length; j++) {
-     if (i==respuestasCheckbox[j]) escorrecta[i]=true;
-    }
-
-    if (escorrecta[i]) {
-     nota +=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
-     darRespuestaHtml("P3: "+i+" correcta");    
-    } else {
-     nota -=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
-     darRespuestaHtml("P3: "+i+" incorrecta");
-    }   
-   }
-  }
-}
 
     
  //****************************************************************************************************************************   
