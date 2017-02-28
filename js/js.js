@@ -446,7 +446,7 @@ function corregirRadio2(){
   //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
   //luego comparar ese value con el value guardado en answer
   var rad = formElement.elements[0];  
-  if (rad.value==respuestaRadio2) {
+  if (rad.value-1==respuestaRadio2) {
    darRespuestaHtml("P1: Correcto");
    nota +=1;
   }
