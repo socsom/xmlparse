@@ -5,6 +5,7 @@ var respuestaSelect=null;
 var respuestaSelect2=null;
 var respuestasCheckbox2 = [];
 var respuestasCheckbox = [];
+var respuestaRadio2=null;
 
 var nota = 0;  //nota de la prueba sobre 3 puntos (hay 3 preguntas)
 
@@ -22,6 +23,7 @@ window.onload = function(){
    corregirTexto2();
    corregirCheckbox2();
    corregirSelect2();
+   corregirRadio2();
    
    
  
@@ -270,6 +272,8 @@ function ponerDatosCheckbox2Html(t,opt){
     opcionesRadio[i]=xmlDoc.getElementById("pregunta_006").getElementsByTagName('option')[i].childNodes[0].nodeValue;
  }  
  ponerDatosRadioHtml(title6,opcionesRadio);
+	 
+	
  /* RESPUESTAS
  var nres = xmlDoc.getElementById("preguntas_003").getElementsByTagName('answer').length;
  for (i = 0; i < nres; i++) { 
@@ -305,6 +309,7 @@ function ponerDatosRadioHtml(t,opt){
     opcionesRadio2[i]=xmlDoc.getElementById("pregunta_001").getElementsByTagName('option')[i].childNodes[0].nodeValue;
  }  
  ponerDatosRadio2Html(title1,opcionesRadio2);
+ respuestaRadio2=parseInt(xmlDoc.getElementsByTagName("answer")[0].innerHTML);
  /* RESPUESTAS
  var nres = xmlDoc.getElementById("preguntas_003").getElementsByTagName('answer').length;
  for (i = 0; i < nres; i++) { 
@@ -435,6 +440,17 @@ function corregirCheckbox2(){
   }
 }
 
+function corregirRadio2(){
+  //Compara el índice seleccionado con el valor del íncide que hay en el xml (<answer>2</answer>)
+  //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
+  //luego comparar ese value con el value guardado en answer
+  var rad = formElement.elements[0];  
+  if (rad.selectedIndex==respuestaRadio2) {
+   darRespuestaHtml("P1: Correcto");
+   nota +=1;
+  }
+  else darRespuestaHtml("P1: Incorrecto");
+}
 
 
 
