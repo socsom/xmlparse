@@ -318,14 +318,7 @@ function ponerDatosRadioHtml(t,opt){
 } 
 */
  
-     //Bucle para rellenar todas las opciones de select
-  for (i = 0; i < opt.length; i++) { 
-    var option = document.createElement("option");
-    option.text = opt[i];
-    option.value=i+1;
-    select.options.add(option);
- }  
-}  
+ 
 
 function ponerDatosRadio2Html(t,opt){
  var radioContainer=document.getElementById('title1');
