@@ -49,8 +49,7 @@ body {
 }
 
 #examen input{
-	display:block;
-	float:left;
+	vertical-align:middle;
 }
 
 
