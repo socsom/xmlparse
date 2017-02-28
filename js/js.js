@@ -330,7 +330,8 @@ function ponerDatosRadio2Html(t,opt){
     label.setAttribute("for", "colorR2_"+i);
     input.type="radio";
     input.name="colorR2";
-    input.id="colorR2_"+i;;    
+    input.id="colorR2_"+i;
+    input.value= i+1;//se lo añado para compararlo después con la respuesta  
     radioContainer.appendChild(input);
     radioContainer.appendChild(label);
  }  
@@ -445,7 +446,7 @@ function corregirRadio2(){
   //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
   //luego comparar ese value con el value guardado en answer
   var rad = formElement.elements[0];  
-  if (rad.selectedIndex==respuestaRadio2) {
+  if (rad.value==respuestaRadio2) {
    darRespuestaHtml("P1: Correcto");
    nota +=1;
   }
