@@ -318,12 +318,30 @@ function ponerDatosRadioHtml(t,opt){
 } 
 */
  
+     //Bucle para rellenar todas las opciones de select
+  for (i = 0; i < opt.length; i++) { 
+    var option = document.createElement("option");
+    option.text = opt[i];
+    option.value=i+1;
+    select.options.add(option);
+ }  
+}  
+
 function ponerDatosRadio2Html(t,opt){
  var radioContainer=document.getElementById('title1');
  var h3 = document.createElement("h3");
  h3.innerHTML = t;
  radioContainer.appendChild(h3); 
- for (i = 0; i < opt.length; i++) { 
+	//Bucle para rellenar todas las opciones de select
+  for (i = 0; i < opt.length; i++) { 
+    var option = document.createElement("option");
+    option.text = opt[i];
+    option.value=i+1;
+    select.options.add(option);
+ }  
+}
+	
+ /*for (i = 0; i < opt.length; i++) { 
     var input = document.createElement("input");
     var label = document.createElement("label");
     label.innerHTML=opt[i];
@@ -336,7 +354,7 @@ function ponerDatosRadio2Html(t,opt){
     radioContainer.appendChild(label);
  }  
 }    
-    
+ */   
     
 }
     
