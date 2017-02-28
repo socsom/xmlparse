@@ -364,7 +364,7 @@ function corregirSelect(){
 function corregirTexto2(){
   //Vosotros debéis comparar el texto escrito con el texto que hay en el xml
   //en este ejemplo hace una comparación de números enteros
-  var s2=formElement.elements[22].value;   
+  var s2=formElement.elements[15].value;   
   if (s2==textoSecreto2) {
    darRespuestaHtml("P7: Correcto");
    nota +=1;
@@ -377,7 +377,7 @@ function corregirSelect2(){
   //Compara el índice seleccionado con el valor del íncide que hay en el xml (<answer>2</answer>)
   //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
   //luego comparar ese value con el value guardado en answer
-  var sel = formElement.elements[3];  
+  var sel = formElement.elements[20];  
   if (sel.selectedIndex==respuestaSelect2) {
    darRespuestaHtml("P9: Correcto");
    nota +=1;
