@@ -50,10 +50,9 @@ body {
 
 #examen input{
 	display:block;
+	float:left;
 }
-#examen option{
-	display:inline-block;
-}
+
 
 #resultadosDiv{
 	width: 50%;
