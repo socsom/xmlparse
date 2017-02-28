@@ -287,10 +287,10 @@ function ponerDatosRadioHtml(t,opt){
     var input = document.createElement("input");
     var label = document.createElement("label");
     label.innerHTML=opt[i];
-    label.setAttribute("for", "color_"+i);
+    label.setAttribute("for", "colorR1_"+i);
     input.type="radio";
-    input.name="color";
-    input.id="color_"+i;;    
+    input.name="colorR1";
+    input.id="colorR1_"+i;;    
     radioContainer.appendChild(input);
     radioContainer.appendChild(label);
  }  
@@ -322,10 +322,10 @@ function ponerDatosRadio2Html(t,opt){
     var input = document.createElement("input");
     var label = document.createElement("label");
     label.innerHTML=opt[i];
-    label.setAttribute("for", "color_"+i);
+    label.setAttribute("for", "colorR2_"+i);
     input.type="radio";
-    input.name="color";
-    input.id="color_"+i;;    
+    input.name="colorR2";
+    input.id="colorR2_"+i;;    
     radioContainer.appendChild(input);
     radioContainer.appendChild(label);
  }  
