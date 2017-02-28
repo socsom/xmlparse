@@ -48,8 +48,11 @@ body {
 	
 }
 
-#examen option{
+#examen input{
 	display:block;
+}
+#examen option{
+	display:inline-block;
 }
 
 #resultadosDiv{
