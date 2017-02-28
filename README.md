@@ -1,4 +1,4 @@
-# xmlprova
+# xmlpARSE
 Fer una aplicació d'examen autocorrectiu amb HTML, CSS, JAVASCRIPT I XML
 ##HTML
 Es crea l'esquelet d'una web utilitzant percentatges per tal que sigui 'responsive' 
