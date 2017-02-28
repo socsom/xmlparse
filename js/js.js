@@ -448,14 +448,14 @@ function corregirRadio2(){
   //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
   //luego comparar ese value con el value guardado en answer
  	
-var rad = formElement.elements[0];  
+var rad = formElement.elements[0].value;  
 for (var i=0, length = rad.length; i <length; i++){  
 if (rad[i].checked){
      if (rad[i].value ==respuestaRadio2) {
    darRespuestaHtml("P1: Correcto");
    nota +=1;
   }
-  else darRespuestaHtml(rad[i].value);
+  else darRespuestaHtml(rad.checked.value);
 }
 }
 }
